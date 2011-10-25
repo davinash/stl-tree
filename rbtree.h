@@ -11,7 +11,7 @@ enum {	RED, BLACK	} ;
 template <typename T>
 struct node {
     static  node*          NIL;
-    typedef typename T	   value_type;
+    typedef T	   value_type;
     typedef unsigned long  size_type;
     T     key;
     node* parent;
@@ -85,7 +85,7 @@ struct node {
         return key >= rhs.key ;	
     }
     bool operator <= (const node& rhs ) const	{	
-        return key <= other.key ;	
+        return key <= rhs.key ;	
     }
     const bool is_left_son(void ) const	{	
         return (parent != NIL ) && (parent->left == this ) ;		
@@ -201,13 +201,13 @@ public:
 template< typename T, typename CMP = std::less<T> >
 class tree {
 public:
-    typedef typename node<T>                node_type;
-    typedef typename T                      value_type;
+    typedef node<T>                node_type;
+    typedef T                      value_type;
     typedef value_type&                     reference;
     typedef value_type const&               const_reference;
     typedef typename node_type::size_type   size_type;
-    typedef typename __iterator<node_type>  iterator ;
-    typedef typename iterator const         const_iterator ;
+    typedef __iterator<node_type>  iterator ;
+    typedef iterator const         const_iterator ;
 
     static node_type*   NIL;
 
